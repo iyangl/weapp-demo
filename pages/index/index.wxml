@@ -1,0 +1,33 @@
+<!--index.wxml-->
+<view class="container">
+  <!--搜索框  -->
+  <view style='background:white; width:100%;'>
+    <icon type='search' style='padding:20rpx'></icon>
+  </view>
+  <!--单选框  -->
+  <view class='container-vertical selector'>
+    <view class='state-selector {{selectCompleteState==0 ? "selected" : "unselect"}}' bindtap='selectorTap' data-state='0'>未完成</view>
+    <view class='divider-horizon'></view>
+    <text class='state-selector {{selectCompleteState==1 ? "selected" : "unselect"}}' bindtap='selectorTap' data-state='1'>已完成</text>
+  </view>
+  <!--列表  -->
+  <block wx:for='{{examList}}'>
+    <view class='item'>
+      <view class='item-head'>
+        <view class='item-title'>
+          <text>时间很长的考试</text>
+        </view>
+        <view class='container-vertical'>
+          <icon type='waiting'></icon>
+          <text>今天 11:40 ~ 2019-02-13 11:37</text>
+        </view>
+      </view>
+      <view class='divider-vertical'></view>
+      <view class='exam-state exam-state-ing'>
+        <text>进行中……</text>
+      </view>
+      <view class='divider-vertical'></view>
+      <view wx:if='{{index < examList.length - 1}}' class='divider-vertical divider-large'></view>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,66 @@
+/**index.wxss**/
+.container-vertical {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.selector {
+  padding: 20rpx 0;
+  background: #f3f3f3;
+}
+
+.state-selector {
+  width: 374rpx;
+  height: auto;
+  text-align: center;
+}
+
+.selected {
+  color: red;
+}
+
+.unselect {
+  color: #888;
+}
+
+.divider-horizon {
+  height: 60rpx;
+  width: 2rpx;
+  background: #ccc;
+}
+
+.divider-vertical {
+  height: 2rpx;
+  width: 100%;
+  background: #ccc;
+}
+
+.item {
+  width: 100%;
+  background: white;
+}
+
+.item-head {
+  padding: 20rpx;
+  font-size: 16px;
+}
+
+.item-title {
+  margin-bottom: 20rpx;
+}
+
+.exam-state {
+  margin: 20rpx;
+  font-size: 14px;
+}
+
+.exam-state-ing {
+  color: red;
+}
+
+.divider-large {
+  height: 20rpx;
+  background: #f0f0f0;
+}

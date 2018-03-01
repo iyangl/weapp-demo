@@ -1,11 +1,28 @@
 //app.js
+const util = require('./utils/util.js')
+const wxApi = require('./utils/wxApi.js')
+const service = require('./utils/services.js')
+const log = require('./utils/log.js')
+
 App({
+  data: {
+    
+  },
+  //util
+  util: util,
+  //wxApi
+  wxApi: wxApi,
+  //service
+  service: service,
+  //log
+  log: log,
+  //初始化,只触发一次
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
+    
     // 登录
     wx.login({
       success: res => {

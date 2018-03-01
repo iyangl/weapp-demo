@@ -1,5 +1,6 @@
 <!--index.wxml-->
 <view class="container">
+  <loading hidden='{{!loading}}'>正在加载</loading>
   <!--搜索框  -->
   <view style='background:white; width:100%;'>
     <icon type='search' style='padding:20rpx'></icon>
@@ -11,20 +12,23 @@
     <text class='state-selector {{selectCompleteState==1 ? "selected" : "unselect"}}' bindtap='selectorTap' data-state='1'>已完成</text>
   </view>
   <!--列表  -->
-  <block wx:for='{{examList}}'>
+  <block wx:for='{{examList}}' wx:key='item.id'>
     <view class='item'>
       <view class='item-head'>
+        <!--标题  -->
         <view class='item-title'>
-          <text>时间很长的考试</text>
+          <text>{{item.title}}</text>
         </view>
+        <!--进行时间  -->
         <view class='container-vertical'>
           <icon type='waiting'></icon>
-          <text>今天 11:40 ~ 2019-02-13 11:37</text>
+          <text>{{item.startDate}} ~ {{item.endDate}}</text>
         </view>
       </view>
       <view class='divider-vertical'></view>
+      <!--状态  -->
       <view class='exam-state exam-state-ing'>
-        <text>进行中……</text>
+        <text>{{item.status == 1 ? '已结束' : '进行中……'}}</text>
       </view>
       <view class='divider-vertical'></view>
       <view wx:if='{{index < examList.length - 1}}' class='divider-vertical divider-large'></view>

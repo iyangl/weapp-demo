@@ -48,7 +48,15 @@ Page({
         examList: list.concat(datas),
         loading: false
       })
-      console.log(self.data.examList)
+    })
+  },
+  // navigator控件不能传对象，所以通过点击事件来传值
+  navigateToNextPage: function(e) {
+    var index = e.currentTarget.dataset.tapIndex;
+    // 将对象转为json字符串传给下个页面
+    var json = JSON.stringify(this.data.examList[index])
+    wx.navigateTo({
+      url: '../detail/detail?info='+json
     })
   }
 })

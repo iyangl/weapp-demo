@@ -13,7 +13,7 @@
   </view>
   <!--列表  -->
   <block wx:for='{{examList}}' wx:key='item.id'>
-    <view class='item'>
+    <view class='item' bindtap='navigateToNextPage' data-tap-index='{{index}}'>
       <view class='item-head'>
         <!--标题  -->
         <view class='item-title'>

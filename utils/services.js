@@ -13,6 +13,10 @@ function mockExamList(type, fun) {
         'title': '时间很长的考试',
         'start|+1345312': 1519882942000,
         'end|+465856': 1599882942000,
+        'score|+1': 0,
+        'passLine': 60,
+        'canCheckAnswer': false,
+        'duration': '30分钟'
       }]
     });
     fun(res);

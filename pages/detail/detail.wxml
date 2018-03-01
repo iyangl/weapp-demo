@@ -1,0 +1,34 @@
+<!--pages/detail/detail.wxml-->
+<view class='container'>
+
+  <view class='info-page'>
+
+    <view>{{examInfo.title}}</view>
+    <view>
+      <text>时间：</text>
+      <text>{{examInfo.startDate}} ~ {{examInfo.endDate}}</text>
+    </view>
+    <view>
+      <text>考试时长：</text>
+      <text>{{examInfo.duration}}</text>
+    </view>
+    <view>
+      <text>学分：</text>
+      <text>{{examInfo.score}}</text>
+    </view>
+    <view>
+      <text>及格线：</text>
+      <text>{{examInfo.passLine}}%</text>
+    </view>
+    <view>
+      <text>答卷查看：</text>
+      <text>{{canCheckAnswer ? '' : '不'}}允许考生查看答卷</text>
+    </view>
+
+    <navigator wx:if='{{examInfo.status == 0}}' url='../exam/exam?id={{examInfo.id}}'>
+      <button class='enter' type='warn'>进入考试</button>
+    </navigator>
+
+  </view>
+
+</view>

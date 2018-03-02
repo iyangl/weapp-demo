@@ -19,6 +19,6 @@ Page({
     })
   },
   navigateToNextPage: function(e) {
-
+    
   }
 })

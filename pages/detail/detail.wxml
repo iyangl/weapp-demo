@@ -3,10 +3,10 @@
 
   <view class='info-page'>
 
-    <view>{{examInfo.title}}</view>
+    <view class='exam-trans-title'>{{examInfo.title}}</view>
     <view>
-      <text>时间：</text>
-      <text>{{examInfo.startDate}} ~ {{examInfo.endDate}}</text>
+      <label class='exam-trans-label'>时间：</label>
+      <text class='exam-trans-para'>{{examInfo.startDate}} ~ {{examInfo.endDate}}</text>
     </view>
     <view>
       <text>考试时长：</text>
@@ -26,7 +26,7 @@
     </view>
 
     <navigator wx:if='{{examInfo.status == 0}}' url='../exam/exam?id={{examInfo.id}}'>
-      <button class='enter' type='warn'>进入考试</button>
+      <button class='enter' type='warn' bindtap='navigateToNextPage'>进入考试</button>
     </navigator>
 
   </view>

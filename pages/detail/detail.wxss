@@ -1,8 +1,10 @@
 /* pages/detail/detail.wxss */
+
 .info-page {
   width: 100%;
   height: 100%;
   position: fixed;
+  padding: 0 1rem;
 }
 
 .enter {
@@ -11,3 +13,19 @@
   width: 94%;
   margin: 3%;
 }
+
+/* .exam-trans-label {
+  float: left;
+  font-weight: 400;
+  font-size: 0.56rem;
+  color: #666;
+}
+
+.exam-trans-title {
+    text-align: center;
+    padding: 1rem 0 .5rem;
+}
+
+.exam-trans-para {
+    font-size: .56rem;
+} */

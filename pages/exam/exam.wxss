@@ -2,6 +2,12 @@
   height: 100%;
   width: 100%;
   position: fixed;
+  overflow: scroll;
+}
+
+.noscroll {
+  height: 100%;
+  overflow: hidden;
 }
 
 .head {
@@ -107,4 +113,20 @@
 
 .fullopacity {
   opacity: 0.2;
+}
+
+.exam-textarea {
+  width: 100%;
+  height: 40%;
+  padding: 20rpx;
+}
+
+.exam-option {
+  display: flex;
+  flex-direction: row;
+  padding: 20rpx;
+}
+
+.exam-topic {
+  padding: 20rpx;
 }

@@ -1,24 +1,43 @@
 <view class='container'>
 
-  <view class='page'>
+  <view class='page {{state?"":"noscroll"}}'>
     <view class='head text-center' bindtap='indexLocation'>考试中
       <icon class='icon-index' type='info'></icon>
     </view>
     <view class='head head-title'>
-      <view>时间很长的考试</view>
-      <view class='head-condition'><text>不限时</text><text>学分：0</text><text>及格线：60%</text></view>
+      <view>{{paper.title}}</view>
+      <view class='head-condition'>
+        <text>{{paper.duration}}</text>
+        <text>学分：{{paper.score}}</text>
+        <text>及格线：{{paper.passLine}}%</text>
+      </view>
     </view>
 
-    <view>
-      <!-- <view class="fullbg {{state ?'hidden':''}}" bindtap="hidebg"></view> -->
+    <view class='exam-topic'>
+      <text>{{q_type}}</text>{{ currentIndex + 1}}.{{q_title}}({{q_score}}分)
+    </view>
+    <block wx:for='{{q_options}}' wx:key='{{item.itemId}}'>
+      <view class='exam-option'>
+        <text>{{index + 1}}. </text>
+        <rich-text wx:if='{{canRichText}}' nodes='{{item.option}}'></rich-text>
+        <block wx:else>
+          <text>{{item.option}}</text>
+        </block>
+        <text></text>
+      </view>
+       <textarea disabled='{{!state}}' wx:if='{{index === q_options.length - 1}}' class='exam-textarea' placeholder='请写下你的答案...' maxlength='1000'></textarea> 
+    </block>
+
+     <view>
       <view class="slidownbottom {{state ? 'slidown' : 'slidup'}} {{ hidden ? 'hidden' : ''}}">
         <block wx:for='{{qIndexs}}' wx:key='*this'>
           <view class='sdbitem borders'>{{item}}</view>
         </block>
       </view>
-    </view>
-  </view>
+    </view> 
 
+    
+  </view>
 
 
 </view>

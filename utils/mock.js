@@ -977,6 +977,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    int: function(min, max) {
 	        return this.integer(min, max)
 	    },
+      // 返回随机的类型
+      q_type: function() {
+        var types = ['SINGLE', 'MULTIPLE', 'JUDGEMENT', 'ASCERTAIN', 'FILL', 'QUESTIONS']
+        var int = this.int(0,5)
+        return types[int]
+      },
 	    // 返回一个随机的浮点数。
 	    float: function(min, max, dmin, dmax) {
 	        dmin = dmin === undefined ? 0 : dmin
@@ -1155,13 +1161,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	                patternLetters[flag] in patternLetters ? creatNewSubString($0, patternLetters[flag]) :
 	                date[patternLetters[flag]]()
 	        })
-	    },
+      },
 	    // 生成一个随机的 Date 对象。
 	    _randomDate: function(min, max) { // min, max
 	        min = min === undefined ? new Date(0) : min
 	        max = max === undefined ? new Date() : max
 	        return new Date(Math.random() * (max.getTime() - min.getTime()))
 	    },
+      // 生成一个随机的 Date 对象。
+      _randomTime: function () {
+        return this._randomDate().getTime()
+      },
 	    // 返回一个随机的日期字符串。
 	    date: function(format) {
 	        format = format || 'yyyy-MM-dd'

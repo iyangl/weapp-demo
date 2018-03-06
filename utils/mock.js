@@ -962,6 +962,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    bool: function(min, max, cur) {
 	        return this.boolean(min, max, cur)
 	    },
+      boo: function() {
+        return Math.random() >= 0.5
+      },
 	    // 返回一个随机的自然数（大于等于 0 的整数）。
 	    natural: function(min, max) {
 	        min = typeof min !== 'undefined' ? parseInt(min, 10) : 0

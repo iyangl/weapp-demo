@@ -37,9 +37,10 @@ function mockExamPaper(fun) {
         'topic_title': '@ctitle(14,30)',
         'topic_score': '@int(1,10)',
         'topic_user_answer':'',
-        'topic_options|40-50': [{
+        'topic_options|4-5': [{
           'option': '@ctitle(14,30)',
           'itemId': '@string(undefined,20,20)',
+          'checked': '@boo()'
         }]
       }],
     });

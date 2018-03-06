@@ -1,43 +1,65 @@
 <view class='container'>
 
-  <view class='page {{state?"":"noscroll"}}'>
-    <view class='head text-center' bindtap='indexLocation'>考试中
-      <icon class='icon-index' type='info'></icon>
-    </view>
-    <view class='head head-title'>
-      <view>{{paper.title}}</view>
-      <view class='head-condition'>
-        <text>{{paper.duration}}</text>
-        <text>学分：{{paper.score}}</text>
-        <text>及格线：{{paper.passLine}}%</text>
+  <view class='page'>
+    <view class='{{state?"scroll":"noscroll"}}'>
+      <!--考试中  -->
+      <view class='head text-center' bindtap='indexLocation'>考试中
+        <icon class='icon-index' type='info'></icon>
       </view>
-    </view>
-
-    <view class='exam-topic'>
-      <text>{{q_type}}</text>{{ currentIndex + 1}}.{{q_title}}({{q_score}}分)
-    </view>
-    <block wx:for='{{q_options}}' wx:key='{{item.itemId}}'>
-      <view class='exam-option'>
-        <text>{{index + 1}}. </text>
-        <rich-text wx:if='{{canRichText}}' nodes='{{item.option}}'></rich-text>
-        <block wx:else>
-          <text>{{item.option}}</text>
+      <!--考试信息  -->
+      <view class='head head-title'>
+        <view>{{paper.title}}</view>
+        <view class='head-condition'>
+          <text>{{paper.duration}}</text>
+          <text>学分：{{paper.score}}</text>
+          <text>及格线：{{paper.passLine}}%</text>
+        </view>
+      </view>
+      <!--题干  -->
+      <view class='exam-topic'>
+        <text class='borders' style='border: solid #ccc 1rpx;'>{{q_type}}</text>{{ currentIndex + 1}}.{{q_item.topic_title}}({{q_item.topic_score}}分)
+      </view>
+      <!--选项  -->
+      <view>
+        <block wx:for='{{q_item.topic_options}}' wx:key='{{item.itemId}}'>
+          <view wx:if='{{q_type === "多选"}}' class='exam-option {{item.checked ? "option-selected" : ""}}' catchtap='onMultiOptionClick' data-item-index='{{index}}' data-item-checked='{{!item.checked}}'>
+            <text>{{index + 1}}. </text>
+            <rich-text wx:if='{{canRichText}}' nodes='{{item.option}}'></rich-text>
+            <block wx:else>
+              <text>{{item.option}}</text>
+            </block>
+            <text></text>
+          </view>
+          <view wx:elif='{{q_type === "单选"}}' class='exam-option {{item.itemId === itemUserAnswer ? "option-selected" : ""}}' catchtap='onSingleOptionClick' data-item-answer='{{item.itemId}}'>
+            <text>{{index + 1}}. </text>
+            <rich-text wx:if='{{canRichText}}' nodes='{{item.option}}'></rich-text>
+            <block wx:else>
+              <text>{{item.option}}</text>
+            </block>
+            <text></text>
+          </view>
+          <!--问答填空区域  -->
+          <!-- <textarea wx:if='{{index === q_item.topic_options.length - 1}}' class='exam-textarea' placeholder='请写下你的答案...' maxlength='1000'></textarea> -->
         </block>
-        <text></text>
       </view>
-       <textarea disabled='{{!state}}' wx:if='{{index === q_options.length - 1}}' class='exam-textarea' placeholder='请写下你的答案...' maxlength='1000'></textarea> 
-    </block>
+    </view>
 
-     <view>
+    <!-- 底部导航栏，切换题目 -->
+    <view class='bottom-bar'>
+      <view class='bottom-bar_navi' bindtap='pre'>{{pre}}</view>
+      <view class='bottom-bar_index'>{{downCount}}/{{totalCount}}</view>
+      <view class='bottom-bar_navi {{next === "提交" ? "back-red":""}}' bindtap='next'>{{next}}</view>
+    </view>
+
+    <!--index导航栏  -->
+    <view>
       <view class="slidownbottom {{state ? 'slidown' : 'slidup'}} {{ hidden ? 'hidden' : ''}}">
         <block wx:for='{{qIndexs}}' wx:key='*this'>
-          <view class='sdbitem borders'>{{item}}</view>
+          <view class='sdbitem borders' catchtap='indexToLocation' data-index='{{index}}'>{{item}}</view>
         </block>
       </view>
-    </view> 
+    </view>
 
-    
   </view>
-
 
 </view>

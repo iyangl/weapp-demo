@@ -1,0 +1,13 @@
+.exam-textarea {
+  width: 710rpx;
+  min-height: 90%;
+  padding: 20rpx;
+  margin-top: 10%;
+}
+
+.back {
+  width: 100%;
+  background: #f5f5f5;
+  color: white;
+  height: 10%;
+}

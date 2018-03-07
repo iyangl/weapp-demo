@@ -3,6 +3,7 @@
     "pages/exam/exam",
     "pages/index/index",
     "pages/detail/detail",
+    "pages/editor/editor",
     "pages/logs/logs"
   ],
   "window": {

@@ -22,26 +22,37 @@
       <!--选项  -->
       <view>
         <block wx:for='{{q_item.topic_options}}' wx:key='{{item.itemId}}'>
+          <!--多选  -->
           <view wx:if='{{q_type === "多选"}}' class='exam-option {{item.checked ? "option-selected" : ""}}' catchtap='onMultiOptionClick' data-item-index='{{index}}' data-item-checked='{{!item.checked}}'>
             <text>{{index + 1}}. </text>
             <rich-text wx:if='{{canRichText}}' nodes='{{item.option}}'></rich-text>
             <block wx:else>
               <text>{{item.option}}</text>
             </block>
-            <text></text>
           </view>
+          <!--单选  -->
           <view wx:elif='{{q_type === "单选"}}' class='exam-option {{item.itemId === itemUserAnswer ? "option-selected" : ""}}' catchtap='onSingleOptionClick' data-item-answer='{{item.itemId}}'>
             <text>{{index + 1}}. </text>
             <rich-text wx:if='{{canRichText}}' nodes='{{item.option}}'></rich-text>
             <block wx:else>
               <text>{{item.option}}</text>
             </block>
-            <text></text>
           </view>
           <!--问答填空区域  -->
           <!-- <textarea wx:if='{{index === q_item.topic_options.length - 1}}' class='exam-textarea' placeholder='请写下你的答案...' maxlength='1000'></textarea> -->
         </block>
       </view>
+      <!--判断  -->
+      <view wx:if='{{q_type === "判断" || q_type === "改错"}}' class='exam-option {{true === itemUserAnswer ? "option-selected" : ""}}' catchtap='onSingleOptionClick' data-item-answer='{{true}}'>
+          <text>1. </text>
+          <text>正确</text>
+      </view>
+      <view wx:if='{{q_type === "判断" || q_type === "改错"}}' class='exam-option {{false === itemUserAnswer ? "option-selected" : ""}}' catchtap='onSingleOptionClick' data-item-answer='{{false}}'>
+          <text>2. </text>
+          <text>错误</text>
+      </view>
+      <!--问答 点击跳转至编辑页面  -->
+      <view wx:if='{{q_type === "改错" || q_type === "问答" || q_type === "填空"}}' hidden='{{q_type === "改错" && itemUserAnswer === true ? true : false}}' class='exam-textarea' bindtap='navigateToEditor'>{{itemUserAnswer === false ? '' : itemUserAnswer}}</view>
     </view>
 
     <!-- 底部导航栏，切换题目 -->

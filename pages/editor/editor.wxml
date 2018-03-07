@@ -1,0 +1,5 @@
+<view class='container'>
+  <view class='back' bindtap='backAndSave'>保存并返回</view>
+  <textarea class='exam-textarea' value='{{value}}' bindblur='onBlur'></textarea>
+
+</view>

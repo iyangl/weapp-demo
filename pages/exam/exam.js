@@ -125,17 +125,20 @@ Page({
   },
   // (废弃，想不出好的办法实现多选)选中题目答案
   onSingleOptionClick: function (e) {
+    console.log(e)
+    this.updateSingleOption(e.currentTarget.dataset.itemAnswer);
+  },
+  // 更新单选某一条数据
+  updateSingleOption: function (itemUserAnswer) {
     var index = this.data.currentIndex;
     var answerList = this.data.answerList;
-    var itemUserAnswer = e.currentTarget.dataset.itemAnswer;
-    answerList[index] = itemUserAnswer
+    answerList[index] = itemUserAnswer;
     console.log(answerList)
     this.setData({
       itemUserAnswer: itemUserAnswer,
       answerList: answerList,
     })
   },
-
   // 选中题目答案(可以多选，里面大量数据操作，等一个更好的实现方案)
   onMultiOptionClick:function(e) {
     var currentIndex = this.data.currentIndex;
@@ -148,5 +151,13 @@ Page({
     })
     // 不调用update方法会导致js内值改变，但页面绑定的值未改变，因为页面没有直接引用到paper变量
     this.update(currentIndex)
+  },
+  // 跳转至编辑页面
+  navigateToEditor: function(e) {
+    var index = this.data.currentIndex;
+    var itemUserAnswer = this.data.itemUserAnswer;
+    wx.navigateTo({
+      url: '../editor/editor?index=' + index + '&value=' + itemUserAnswer,
+    })
   }
 })

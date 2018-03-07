@@ -28,13 +28,13 @@ function mockExamList(type, fun) {
 function mockExamPaper(fun) {
   setTimeout(() => {
     var res = Mock.mock({
-      'title': '@ctitle(8,20)',
+      'title': '@ctitle(8,14)',
       'duration': '不限时',
       'score': '@int(0,10)',
       'passLine': '@int(50,100)',
       'topics|20-30': [{
         'topic_type': '@q_type()',
-        'topic_title': '@ctitle(14,30)',
+        'topic_title': '@ctitle(14,40)',
         'topic_score': '@int(1,10)',
         'topic_user_answer':'',
         'topic_options|4-5': [{
